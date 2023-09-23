@@ -19,6 +19,7 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'spc'
     publishLocation: 'Container'
+
   
     
 
