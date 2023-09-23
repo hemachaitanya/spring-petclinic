@@ -1,5 +1,5 @@
 pool:
-  name: 'Azure Pipelines'
+  name: 'Default'
   vmImage: ubuntu-22.04
 steps:
 - task: Maven@4
@@ -9,12 +9,16 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
     jdkversionOption: '1.17'
-    sonarQubeRunAnalysis: true
-- task: SonarQubePrepare@4
+- task: CopyFiles@2
   inputs:
-    SonarQube: 'SONAR_CLOUDY'
-    scannerMode: 'CLI'
-    cliProjectKey: 'sohail'
-    cliProjectName: 'sohail_spring'
-    cliSources: 'src'
+    Contents: '**/target/*.jar'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'spc'
+    publishLocation: 'Container'
+  
+    
+
 
