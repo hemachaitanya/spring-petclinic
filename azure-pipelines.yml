@@ -8,7 +8,8 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
-    jdkversionOption: '1.17'
+    jdkVersionOption: '1.17'
+    mavenVersionOption: '3.9.4'
 - task: CopyFiles@2
   inputs:
     Contents: '**/target/*.jar'
