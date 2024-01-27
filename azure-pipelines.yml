@@ -1,5 +1,5 @@
 pool:
-  name: 'Azure Pielines'
+  name: 'Azure Pipelines'
   VmImage: 'ubuntu-latest'
 trigger:
 - main
