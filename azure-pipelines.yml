@@ -1,25 +1,18 @@
 pool:
-  name: 'Default'
-  vmImage: ubuntu-22.04
+  name: 'Azure Pieline'
+  VmImage: 'ubuntu-latest'
+trigger:
+- main
 steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'Path'
-    jdkDirectory: '/usr/lib/jvm/java-17-openjdk-amd64'
-- task: CopyFiles@2
-  inputs:
-    Contents: '**/target/*.jar'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'spc'
-    publishLocation: 'Container'
-
-  
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: '3.9.4'
+    jdkVersionOption: '1.17'
     
 
 
+ 
