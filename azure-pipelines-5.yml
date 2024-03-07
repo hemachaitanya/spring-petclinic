@@ -1,7 +1,7 @@
 pool: 
   vmImage: ubuntu:latest
   name: Azure Pipelines
-trigges:
+triggers:
   - main
 steps:
   - task: Maven@4
